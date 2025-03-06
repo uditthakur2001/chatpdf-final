@@ -11,6 +11,7 @@ import docx
 import openpyxl
 import os
 
+
 # Set the Google API Key in the environment
 st.set_page_config(page_title="ChatPDF", page_icon="📝", layout="wide")
 
@@ -38,19 +39,18 @@ user_question = st.sidebar.text_area(
     "Enter your question:",
     placeholder="E.g., What is the main topic of the document?",
 )
-
 # Add a Search Button
 st.sidebar.button("🔍 Search")
 
-# # File to store question-answer history
-# qa_history_file = "qa_history.txt"
+# File to store question-answer history
+qa_history_file = "qa_history.txt"
 
-# def save_to_txt(question, answer):
-#     """Save the question and answer to a text file."""
-#     with open(qa_history_file, "a", encoding="utf-8") as f:
-#         f.write(f"Question: {question}\n")
-#         f.write(f"Answer: {answer}\n")
-#         f.write("=" * 50 + "\n")  # Separator for readability
+def save_to_txt(question, answer):
+    """Save the question and answer to a text file."""
+    with open(qa_history_file, "a", encoding="utf-8") as f:
+        f.write(f"Question: {question}\n")
+        f.write(f"Answer: {answer}\n")
+        f.write("=" * 50 + "\n")  # Separator for readability
 
 @st.cache_data
 def extract_text_from_pdf(pdf_file):
@@ -148,10 +148,10 @@ if uploaded_file and api_key and user_question:
                 if line.strip():
                     st.write(line)
 
-            # # Save the question and answer to the text file
-            # save_to_txt(user_question, generated_answer)
+            # Save the question and answer to the text file
+            save_to_txt(user_question, generated_answer)
 
-            # st.sidebar.success("Question and Answer saved to 'qa_history.txt'!")
+            st.sidebar.success("Question and Answer saved to 'qa_history.txt'!")
 
         except Exception as e:
             st.error(f"An error occurred: {e}")
