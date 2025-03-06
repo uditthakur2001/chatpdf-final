@@ -11,16 +11,6 @@ import docx
 import openpyxl
 import os
 
-
-import subprocess
-
-# For installing faiss
-try:
-    import faiss
-except ImportError:
-    subprocess.run(["pip", "install", "faiss-cpu==1.7.4"])
-    import faiss
-
 # Set the Google API Key in the environment
 st.set_page_config(page_title="ChatPDF", page_icon="📝", layout="wide")
 
