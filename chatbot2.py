@@ -18,7 +18,7 @@ import subprocess
 try:
     import faiss
 except ImportError:
-    subprocess.run(["pip", "install", "faiss-cpu"])
+    subprocess.run(["pip", "install", "faiss-cpu==1.7.4"])
     import faiss
 
 # Set the Google API Key in the environment
