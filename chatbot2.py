@@ -15,11 +15,11 @@ import os
 import subprocess
 
 # For installing faiss
-# try:
-#     import faiss
-# except ImportError:
-#     subprocess.run(["pip", "install", "faiss-cpu"])
-#     import faiss
+try:
+    import faiss
+except ImportError:
+    subprocess.run(["pip", "install", "faiss-cpu"])
+    import faiss
 
 # Set the Google API Key in the environment
 st.set_page_config(page_title="ChatPDF", page_icon="📝", layout="wide")
